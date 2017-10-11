@@ -11,5 +11,5 @@ RUN php -r "if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60e
 RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 RUN php -r "unlink('composer-setup.php');"
 
-RUN composer create-project lucciano/symfony --no-scripts --no-progress --stability=dev
+RUN composer create-project lucciano/symfony --no-scripts --no-progress --stability=dev .
 

@@ -13,3 +13,4 @@ RUN php -r "unlink('composer-setup.php');"
 
 RUN composer create-project lucciano/symfony --no-scripts --no-progress --stability=dev .
 
+RUN chown www-data:www-data -R var/

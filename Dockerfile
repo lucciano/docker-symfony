@@ -1,8 +1,12 @@
 FROM php:7-apache
 
-RUN apt-get update && apt-get install -yq libzip-dev git
-RUN pecl install zip
-RUN echo extension=zip.so > /usr/local/etc/php/conf.d/20-zip.ini
+RUN apt-get update && apt-get install -yq libzip-dev git && \
+    pecl install zip && \
+    docker-php-ext-enable zip 
+	
+RUN  docker-php-ext-install pdo pdo_mysql \
+    && docker-php-ext-install pdo pdo_mysql
+
 
 RUN sed -i '/DocumentRoot/c\\tDocumentRoot /var/www/html/web' /etc/apache2/sites-enabled/000-default.conf
 
